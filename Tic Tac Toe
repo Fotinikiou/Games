@@ -1,0 +1,88 @@
+##Tic-Tac-Toe
+
+#Assign numbers to each of the 9 boxes on the grid
+#Number the boxes from 1-9 going from top left to bottom right
+#Initially the boxes will be empty
+Boxes = {'1':'','2':'','3':'','4':'','5':'','6':'','7':'','8':'','9':''}
+
+#First create the structure of the grid
+
+def gridline(grid):
+    print(grid['1']+' |'+grid['2']+' |'+grid['3'])
+    print('- - -')
+    print(grid['4']+' |'+grid['5']+' |'+grid['6'])
+    print('- - -')
+    print(grid['7']+' |'+grid['8']+' |'+grid['9'])
+
+#Print the empty grid for the beginning of the game
+print(gridline(Boxes))
+
+def game():
+    
+    turn = 0
+    player = 'X'
+    
+    for i in range(10):
+        #First let player X choose position
+                #Make sure to change player every round
+        if player =='X':
+            player = 'O'
+        else:
+            player = 'X'
+        print("Now it's "+ player+"'s turn. Enter your desired position(1-9):" )
+        move = input()
+        
+        if Boxes[move]=='':
+            Boxes[move] = player
+            turn = turn+1
+        else:
+            print("Now it's "+ player+"'s turn. Enter your desired position(1-9):")
+        print(gridline(Boxes))
+
+        
+        #The smallest number of turns where a player can win is 5
+        #Check if player X or O has won after the 5 turns and onwards
+        if turn>=5:
+            #Top row
+            if Boxes['1'] == Boxes['2']== Boxes['3'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['1']+'won')
+            #Middle row    
+            elif Boxes['4'] == Boxes['5']== Boxes['6'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['4']+'won')
+            #Bottom row
+            elif Boxes['7'] == Boxes['8']== Boxes['9'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['1']+'won')
+            #Left column
+            elif Boxes['1'] == Boxes['4']== Boxes['7'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['1']+'won')
+            #Middle column
+            elif Boxes['2'] == Boxes['5']== Boxes['8'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['2']+'won')
+            #Right column
+            elif Boxes['3'] == Boxes['6']== Boxes['9'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['3']+'won')
+            #Downhill diagonal
+            elif Boxes['1'] == Boxes['5']== Boxes['9'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['1']+'won')
+            #Uphill diagonal
+            elif Boxes['3'] == Boxes['5']== Boxes['7'] !='':
+                print(gridline(Boxes))
+                print('Game Over, player' + Boxes['1']+'won')
+            
+        #If none X or O win, then there is a tie
+        if turn==9:
+            print("There is a tie. None of the players wone")
+            
+            
+
+print(game())            
+
+
+            
