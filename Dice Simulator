@@ -1,0 +1,22 @@
+##DICE ROLLING SIMULATOR##
+
+#Randomly roll a dice between 1-6. Ask teh player everytime if tey want to dice again.
+
+def dicegame():
+    import random
+    x = input('Do you want to roll the dice? yes/no ')
+
+    while x == 'yes':
+        dice = random.randint(1,6)
+        print(dice)
+        x = input('Do you want to roll the dice again? ')
+    if x=='yes':
+        newdice = random.randint(1,6)
+        print(newdice)
+    else:
+        exit()
+    
+    
+   
+
+dicegame()        
